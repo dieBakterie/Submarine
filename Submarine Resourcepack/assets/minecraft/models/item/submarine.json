@@ -4,6 +4,6 @@
         "layer0": "item/farmland"
     },
     "overrides": [
-        {"predicate": {"custom_model_data":67}, "model": "item/submarine"}
+        {"predicate": {"custom_model_data":66}, "model": "item/submarine"}
       ]
 }

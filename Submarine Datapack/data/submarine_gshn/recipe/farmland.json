@@ -1,5 +1,6 @@
 ﻿{
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "pattern": [
     " bc",
     "gnp",
@@ -24,6 +25,9 @@
   },
   "result": {
     "id": "minecraft:farmland",
-    "count": 1
+    "count": 1,
+    "components": {
+      "minecraft:custom_model_data": 66
+    }
   }
 }

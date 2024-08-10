@@ -20,6 +20,4 @@ execute as @e[name=sub,scores={subhp=..0}] at @s run function submarine_gshn:exp
 execute as @e[name=sub,tag=subforward] at @s run function submarine_gshn:sound
 execute as @e[name=sub,tag=subbackwards] at @s run function submarine_gshn:sound
 execute as @e[name=sub] at @s run function submarine_gshn:minisub_color_trigger
-scoreboard players add @a[tag=submariner] animation 1
-scoreboard players set @a[scores={animation=20}] animation 0
 
