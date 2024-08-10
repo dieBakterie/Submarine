@@ -1,0 +1,29 @@
+﻿{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " bc",
+    "gnp",
+    "bbb"
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:iron_block"
+    },
+    "c": {
+      "item": "minecraft:chest"
+    },
+    "g": {
+      "item": "minecraft:glass"
+    },
+    "n": {
+      "item": "minecraft:nether_star"
+    },
+    "p": {
+      "item": "minecraft:piston"
+    }
+  },
+  "result": {
+    "id": "minecraft:farmland",
+    "count": 1
+  }
+}
