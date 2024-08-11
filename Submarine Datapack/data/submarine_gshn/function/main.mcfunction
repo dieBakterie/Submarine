@@ -1,4 +1,3 @@
-item replace entity @a[nbt={SelectedItem:{id:"minecraft:farmland",count:1}}] weapon.mainhand with turtle_spawn_egg[custom_name='"Spawn Submarine"',lore=['"Use it on water!"'],entity_data={id:"minecraft:villager",Silent:1b,NoAI:1b,active_effects:[{id:"minecraft:invisibility",amplifier:1,duration:199980,show_particles:0b}]}] 1
 tag @a[tag=submariner] remove submariner
 execute as @e[name=sub] at @s run function submarine_gshn:submariner
 execute as @a[tag=submariner] at @s run function submarine_gshn:rotation
