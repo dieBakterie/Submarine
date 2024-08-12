@@ -307,7 +307,7 @@
 		{
 			"name": "traeger_oben_rechts",
 			"from": [12, 13.1, 0.8],
-			"to": [13, 14.1, 14.4],
+			"to": [13, 14.1, 12.5],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 6.9, 8.65]},
 			"faces": {
 				"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
@@ -335,7 +335,7 @@
 		{
 			"name": "traeger_oben_links",
 			"from": [3, 13.1, 0.8],
-			"to": [4, 14.1, 14.4],
+			"to": [4, 14.1, 12.5],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 6.9, 8.65]},
 			"faces": {
 				"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
