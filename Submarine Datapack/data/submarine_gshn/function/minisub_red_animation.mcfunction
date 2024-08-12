@@ -18,3 +18,4 @@ execute as @p[tag=submariner,scores={animation=17}] at @s run data merge entity 
 execute as @p[tag=submariner,scores={animation=18}] at @s run data merge entity @e[type=armor_stand,limit=1,distance=..1,name="sub",tag=color_red] {ArmorItems:[{},{},{},{id:"minecraft:diamond_hoe",count:1,components:{custom_model_data:54}}]}
 execute as @p[tag=submariner,scores={animation=19}] at @s run data merge entity @e[type=armor_stand,limit=1,distance=..1,name="sub",tag=color_red] {ArmorItems:[{},{},{},{id:"minecraft:diamond_hoe",count:1,components:{custom_model_data:55}}]}
 execute as @p[tag=submariner,scores={animation=20}] at @s run data merge entity @e[type=armor_stand,limit=1,distance=..1,name="sub",tag=color_red] {ArmorItems:[{},{},{},{id:"minecraft:diamond_hoe",count:1,components:{custom_model_data:56}}]}
+

@@ -14,3 +14,4 @@ execute if entity @e[type=item,distance=..2,limit=1,nbt={Item:{id:"minecraft:pur
 execute if entity @e[type=item,distance=..2,limit=1,nbt={Item:{id:"minecraft:red_dye",count:1}}] run function submarine_gshn:minisub_red
 execute if entity @e[type=item,distance=..2,limit=1,nbt={Item:{id:"minecraft:white_dye",count:1}}] run function submarine_gshn:minisub_white
 execute if entity @e[type=item,distance=..2,limit=1,nbt={Item:{id:"minecraft:yellow_dye",count:1}}] run function submarine_gshn:minisub_yellow
+
