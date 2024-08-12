@@ -6,6 +6,7 @@ scoreboard players set @e[name=sub,tag=subspawn] subenergy 5000
 scoreboard players set @e[name=sub,tag=subspawn] subenergy_max 50
 scoreboard players set @e[name=sub,tag=subspawn] subhp 100
 scoreboard players set @e[name=sub,tag=subspawn] subsound 0
+scoreboard players set @e[name=sub,tag=subspawn] animation 0
 tag @e[name=sub,tag=subspawn] remove subspawn
 tp @s ~ -130 ~
 
