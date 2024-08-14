@@ -1,0 +1,45 @@
+﻿{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "submarine",
+  "pattern": [
+    " bc",
+    "gdp",
+    "bbb"
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:iron_block"
+    },
+    "c": {
+      "item": "minecraft:chest"
+    },
+    "g": {
+      "item": "minecraft:glass"
+    },
+    "d": {
+      "item": "minecraft:magenta_dye"
+    },
+    "p": {
+      "item": "minecraft:piston"
+    }
+  },
+  "result": {
+    "id": "minecraft:turtle_spawn_egg",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "{\"bold\":false,\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"Spawn magenta Submarine\",\"underlined\":false}",
+      "custom_model_data": 37,
+      "minecraft:lore": [
+        "{\"text\":\"Use it on water!\"}"
+      ],
+      "entity_data": {
+        "id": "minecraft:marker",
+        "CustomName": "{\"text\":\"Spawn Submarine\"}",
+        "Tags": [
+          "color_magenta"
+        ]
+      }
+    }
+  }
+}

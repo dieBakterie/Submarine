@@ -1,6 +1,27 @@
 {
     "parent": "minecraft:item/template_spawn_egg",
     "overrides": [
-        { "predicate": { "custom_model_data": 66 }, "model": "submarine:item/submarine" }
-    ]
+        {"predicate": {"custom_model_data":1}, "model": "submarine:item/submarine_black_1"},
+        {"predicate": {"custom_model_data":5}, "model": "submarine:item/submarine_blue_1"},
+        {"predicate": {"custom_model_data":9}, "model": "submarine:item/submarine_brown_1"},
+        {"predicate": {"custom_model_data":13}, "model": "submarine:item/submarine_cyan_1"},
+        {"predicate": {"custom_model_data":17}, "model": "submarine:item/submarine_gray_1"},
+        {"predicate": {"custom_model_data":21}, "model": "submarine:item/submarine_green_1"},
+        {"predicate": {"custom_model_data":25}, "model": "submarine:item/submarine_light_blue_1"},
+        {"predicate": {"custom_model_data":29}, "model": "submarine:item/submarine_light_gray_1"},
+        {"predicate": {"custom_model_data":33}, "model": "submarine:item/submarine_lime_1"},
+        {"predicate": {"custom_model_data":37}, "model": "submarine:item/submarine_magenta_1"},
+        {"predicate": {"custom_model_data":41}, "model": "submarine:item/submarine_orange_1"},
+        {"predicate": {"custom_model_data":45}, "model": "submarine:item/submarine_pink_1"},
+        {"predicate": {"custom_model_data":49}, "model": "submarine:item/submarine_purple_1"},
+        {"predicate": {"custom_model_data":53}, "model": "submarine:item/submarine_red_1"},
+        {"predicate": {"custom_model_data":57}, "model": "submarine:item/submarine_white_1"},
+        {"predicate": {"custom_model_data":61}, "model": "submarine:item/submarine_yellow_1"}
+    ],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 3.1, 0.1],
+			"scale": [0.7, 0.7, 0.7]
+		}
+	}
 }
