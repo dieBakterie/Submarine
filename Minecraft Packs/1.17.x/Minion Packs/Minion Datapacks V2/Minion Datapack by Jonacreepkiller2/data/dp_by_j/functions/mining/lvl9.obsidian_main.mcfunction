@@ -1,0 +1,21 @@
+#fuse
+execute as @e[tag=obsidian_obfuscated] positioned as @s unless block ^ ^ ^ obsidian run tag @s remove obsidian_obfuscated
+execute as @e[tag=obsidian.gen,tag=!obsidian_obfuscated] positioned as @s if block ^ ^ ^ obsidian run tag @s add obsidian_obfuscated
+execute as @e[tag=obsidian_minion,tag=lvl9] at @s if entity @e[tag=obsidian.gen,limit=24,distance=..3] run tag @s add obsidian.gen_true
+
+
+#get minion
+execute as @e[tag=obsidian_minion,tag=lvl9] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"obsidian remover"}'}}}}] run tag @p add obsidian.crafter_lvl9
+execute as @e[tag=obsidian_minion,tag=lvl9] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"obsidian remover"}'}}}}] run fill ^-2 ^-1 ^-2 ^2 ^-1 ^2 air replace obsidian
+execute as @e[tag=obsidian_minion,tag=lvl9] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"obsidian remover"}'}}}}] run kill @e[type=!player,distance=..3]
+execute as @a[tag=obsidian.crafter_lvl9] run 
+execute as @a[tag=obsidian.crafter_lvl9] run give @s tripwire_hook{display:{Name:'{"text":"obsidian remover"}'}}
+execute as @a[tag=obsidian.crafter_lvl9,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"obsidian remover"}'}}}]}] run tag @s remove obsidian.crafter_lvl9
+
+#main
+scoreboard players add @e[tag=obsidian_minion,tag=lvl9] obsi_gen_delay 1
+execute as @e[scores={obsi_gen_delay=480},tag=lvl9] at @s positioned as @e[distance=..3,tag=!obsidian_obfuscated,tag=obsidian.gen,sort=random,limit=1] run setblock ^ ^ ^ obsidian
+execute as @e[scores={obsi_gen_delay=480},tag=lvl9] run scoreboard players add @s obsidian_counter 1
+execute as @e[scores={obsidian_counter=24},tag=lvl9] at @s run tag @e[distance=..3,tag=obsidian_obfuscated,limit=1,sort=random] add obsidian_selected
+execute as @e[scores={obsidian_counter=24},tag=lvl9] if entity @e[tag=obsidian_selected] run function dp_by_j:mining/lvl9.obsidian_mining
+execute as @e[scores={obsi_gen_delay=480,obsidian_counter=1..},tag=lvl9] run scoreboard players set @s obsi_gen_delay 0

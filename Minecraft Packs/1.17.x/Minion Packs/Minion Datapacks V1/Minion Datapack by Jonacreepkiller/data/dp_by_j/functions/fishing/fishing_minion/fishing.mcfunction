@@ -1,0 +1,1 @@
+execute as @e[team=fishing,limit=1,scores=(score:"fishing_delay=600")] run loot insert ^ ^ ^1 fish minecraft:gameplay/fishing ~ ~ ~
