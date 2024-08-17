@@ -12,9 +12,9 @@ colors = [
 # List of submarine .json files
 submarines = [
     "submarine_model_template_1.json",
-    "submarine_model_template_2.json",
-    "submarine_model_template_3.json",
-    "submarine_model_template_4.json"
+    "submarine_model_templatesubmarine_2.json",
+    "submarine_model_template_submarine_3.json",
+    "submarine_model_template_submarine_4.json"
 ]
 
 # Create output directory if it doesn't exist

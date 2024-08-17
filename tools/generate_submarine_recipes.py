@@ -10,39 +10,58 @@ def speichere_json(content, file_path):
     with open(file_path, 'w') as file:
         file.write(content)
 
-# Liste der 16 Minecraft-Farben
-farben = [
-    "black", "blue", "brown", "cyan", "gray", 
-    "green", "light_blue", "light_gray", "lime", "magenta", 
-    "orange", "pink", "purple", "red", "white", "yellow"
-]
+# Liste der 16 Minecraft-Farben mit entsprechenden Hex-Codes
+colors_with_hex = {
+    'black': '#000000',
+    'blue': '#0000AA',
+    'brown': '#AA5500',
+    'cyan': '#00AAAA',
+    'gray': '#AAAAAA',
+    'green': '#00AA00',
+    'light_blue': '#55FFFF',
+    'light_gray': '#AAAAAA',
+    'lime': '#55FF55',
+    'magenta': '#FF55FF',
+    'orange': '#FFAA00',
+    'pink': '#FFAAFF',
+    'purple': '#AA00AA',
+    'red': '#FF5555',
+    'white': '#FFFFFF',
+    'yellow': '#FFFF55'
+}
 
-# Pfade
-vorlage_datei = "templates/recipe/submarine_recipe_template.json"
-ausgabe_ordner = "submarine/recipe"
+# Pfade für die Input- und Output-Verzeichnisse
+input_dirs = ['templates/recipes/1.21.1', 'templates/recipes/1.21.2']
+output_dirs = ['submarine/recipe/1.21.1', 'submarine/recipe/1.21.2']
 
-# Verzeichnis erstellen, falls nicht vorhanden
-os.makedirs(ausgabe_ordner, exist_ok=True)
+# Namen der Vorlagen-Dateien
+template_files = ['submarine_recipe_template_1.21.1.json', 'submarine_recipe_template_1.21.2.json']
 
-# Lade die submarine_recipe_template.json Datei als Text
-Vorlage = lade_json(vorlage_datei)
+# Verzeichnisse erstellen, falls nicht vorhanden
+for output_dir in output_dirs:
+    os.makedirs(output_dir, exist_ok=True)
 
-# Startwert für custom_model_data
-custom_model_data_start = 1
+# Für jedes Template und jeden Output-Ordner die entsprechenden Dateien generieren
+for input_dir, template_file, output_dir in zip(input_dirs, template_files, output_dirs):
+    # Lade die submarine_recipe_template.json Datei als Text
+    template_content = lade_json(os.path.join(input_dir, template_file))
 
-# Für jede Farbe die JSON-Datei erstellen
-for index, farbe in enumerate(farben):
-    # Berechne den custom_model_data Wert
-    custom_model_data = custom_model_data_start + (index * 4)
-    
-    # Ersetze die Platzhalter in der Vorlage, wobei der custom_model_data-Wert als Zahl eingefügt wird
-    farbige_vorlage = Vorlage.replace("$color", farbe).replace("$color_dye", f"{farbe}_dye")
-    
-    # Ersetze den $custom_model_data Platzhalter direkt im Text
-    farbige_vorlage = farbige_vorlage.replace('"$custom_model_data"', str(custom_model_data))
+    # Startwert für custom_model_data
+    custom_model_data_start = 1
 
-    # Datei speichern
-    output_file = os.path.join(ausgabe_ordner, f"submarine_{farbe}.json")
-    speichere_json(farbige_vorlage, output_file)
+    # Für jede Farbe die JSON-Datei erstellen
+    for index, (color, hex_code) in enumerate(colors_with_hex.items()):
+        # Berechne den custom_model_data Wert
+        custom_model_data = custom_model_data_start + (index * 4)
 
-print(f"Successfully created {len(farben)} recipe files in the '{ausgabe_ordner}' directory.")
+        # Ersetze die Platzhalter in der Vorlage
+        colored_template = template_content.replace('$hex_code', hex_code).replace('$color', color).replace('$color_dye', f'{color}_dye')
+
+        # Ersetze den $custom_model_data Platzhalter direkt im Text
+        colored_template = colored_template.replace('"$custom_model_data"', str(custom_model_data)).replace('$custom_model_data', str(custom_model_data))
+
+        # Datei speichern
+        output_file = os.path.join(output_dir, f'{color}_submarine.json')
+        speichere_json(colored_template, output_file)
+
+print('Successfully created recipe files for both versions in their respective directories.')
