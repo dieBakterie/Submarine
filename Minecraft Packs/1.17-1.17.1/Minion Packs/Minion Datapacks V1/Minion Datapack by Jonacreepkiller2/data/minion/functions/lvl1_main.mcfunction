@@ -1,0 +1,3 @@
+function dp_by_j:combat/lvl1_combat_main
+function dp_by_j:farming/lvl1_farming_main
+function dp_by_j:mining/lvl1_mining_main

@@ -1,0 +1,3 @@
+function dp_by_j:farming/lvl10/lvl10_template_blockcheck
+function dp_by_j:farming/lvl10/lvl10_template_moisture
+function dp_by_j:farming/lvl10/lvl10_template_armorstand_spawner

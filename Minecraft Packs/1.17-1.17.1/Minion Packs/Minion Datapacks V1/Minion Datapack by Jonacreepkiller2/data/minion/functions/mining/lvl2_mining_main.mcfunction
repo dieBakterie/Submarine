@@ -1,0 +1,11 @@
+function dp_by_j:mining/lvl2/lvl2_emerald_main
+function dp_by_j:mining/lvl2/lvl2_glowstone_main
+function dp_by_j:mining/lvl2/lvl2_coal_main
+function dp_by_j:mining/lvl2/lvl2_cobblestone_main
+function dp_by_j:mining/lvl2/lvl2_diamond_main
+function dp_by_j:mining/lvl2/lvl2_redstone_main
+function dp_by_j:mining/lvl2/lvl2_lapis_main
+function dp_by_j:mining/lvl2/lvl2_gold_main
+function dp_by_j:mining/lvl2/lvl2_obsidian_main
+function dp_by_j:mining/lvl2/lvl2_iron_main
+function dp_by_j:mining/lvl2/lvl2_quarz_main

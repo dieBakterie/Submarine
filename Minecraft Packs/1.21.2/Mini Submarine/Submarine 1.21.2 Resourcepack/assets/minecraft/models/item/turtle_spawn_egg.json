@@ -1,0 +1,21 @@
+{
+    "parent": "minecraft:item/template_spawn_egg",
+    "overrides": [
+        {"predicate": {"custom_model_data":1}, "model": "submarine:item/submarines/black/black_submarine_1"},
+        {"predicate": {"custom_model_data":5}, "model": "submarine:item/submarines/blue/blue_submarine_1"},
+        {"predicate": {"custom_model_data":9}, "model": "submarine:item/submarines/brown/brown_submarine_1"},
+        {"predicate": {"custom_model_data":13}, "model": "submarine:item/submarines/cyan/cyan_submarine_1"},
+        {"predicate": {"custom_model_data":17}, "model": "submarine:item/submarines/gray/gray_submarine_1"},
+        {"predicate": {"custom_model_data":21}, "model": "submarine:item/submarines/green/green_submarine_1"},
+        {"predicate": {"custom_model_data":25}, "model": "submarine:item/submarines/light_blue/light_blue_submarine_1"},
+        {"predicate": {"custom_model_data":29}, "model": "submarine:item/submarines/light_gray/light_gray_submarine_1"},
+        {"predicate": {"custom_model_data":33}, "model": "submarine:item/submarines/lime/lime_submarine_1"},
+        {"predicate": {"custom_model_data":37}, "model": "submarine:item/submarines/magenta/magenta_submarine_1"},
+        {"predicate": {"custom_model_data":41}, "model": "submarine:item/submarines/orange/orange_submarine_1"},
+        {"predicate": {"custom_model_data":45}, "model": "submarine:item/submarines/pink/pink_submarine_1"},
+        {"predicate": {"custom_model_data":49}, "model": "submarine:item/submarines/purple/purple_submarine_1"},
+        {"predicate": {"custom_model_data":53}, "model": "submarine:item/submarines/red/red_submarine_1"},
+        {"predicate": {"custom_model_data":57}, "model": "submarine:item/submarines/white/white_submarine_1"},
+        {"predicate": {"custom_model_data":61}, "model": "submarine:item/submarines/yellow/yellow_submarine_1"}
+    ]
+}
