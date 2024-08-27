@@ -1,4 +1,4 @@
-execute store result score @s subhp_max run attribute @s minecraft:generic.max_health base get 1
+execute store result score @s subhp_max run attribute @s minecraft:max_health base get 1
 execute store result score @s subhp_disp run data get entity @s Health 1
 scoreboard players operation @s subhp_disp -= @s subhp_max
 scoreboard players operation @e[name=sub,distance=..2,limit=1] subhp += @s subhp_disp
