@@ -1,4 +1,4 @@
-# Gshn28 Datapacks
+# Datapacks
 
 ## Information
 
