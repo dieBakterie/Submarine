@@ -1,0 +1,38 @@
+﻿{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "submarine",
+  "key": {
+    "b": "minecraft:iron_block",
+    "c": "minecraft:chest",
+    "g": "minecraft:glass",
+    "d": "minecraft:red_dye",
+    "p": "minecraft:piston"
+  },
+  "pattern": [
+    " bc",
+    "gdp",
+    "bbb"
+  ],
+    "result": {
+    "id": "minecraft:turtle_spawn_egg",
+    "count": 1,
+    "components": {
+      "minecraft:item_name": "{\"bold\":false,\"color\":\"#FF5555\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"Spawn red red Submarine\",\"underlined\":false}",
+      "minecraft:item_model": "minecraft:red/red_submarine_1",
+      "minecraft:lore": [
+        "{\"bold\":false,\"color\":\"#FF5555\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"A red submarine that can be used to explore the depths of the ocean.\",\"underlined\":false}"
+      ],
+      "entity_data": {
+        "id": "minecraft:marker",
+        "NoGravity" : true,
+        "Silent" : true,
+        "Invulnerable" : true,
+        "CustomName": "{\"bold\":false,\"color\":\"#FF5555\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"Spawn red Submarine\",\"underlined\":false}",
+        "Tags": [
+          "color_red"
+        ]
+      }
+    }
+  }
+}

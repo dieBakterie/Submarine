@@ -1,12 +1,7 @@
-﻿{
+{
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "submarine",
-  "pattern": [
-    " bc",
-    "gdp",
-    "bbb"
-  ],
   "key": {
     "b": "minecraft:iron_block",
     "c": "minecraft:chest",
@@ -14,24 +9,27 @@
     "d": "minecraft:magenta_dye",
     "p": "minecraft:piston"
   },
-    "result": {
+  "pattern": [
+    " bc",
+    "gdp",
+    "bbb"
+  ],
+  "result": {
     "id": "minecraft:turtle_spawn_egg",
     "count": 1,
     "components": {
       "minecraft:custom_name": "{\"bold\":false,\"color\":\"#FF55FF\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"Spawn magenta Submarine\",\"underlined\":false}",
       "custom_model_data": 37,
       "minecraft:lore": [
-        "{\"bold\":false,\"color\":\"#FF55FF\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"A submarine that can be used to explore the depths of the ocean.\",\"underlined\":false}"
+        "{\"bold\":false,\"color\":\"#FF55FF\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"A magenta submarine that can be used to explore the depths of the ocean.\",\"underlined\":false}"
       ],
       "entity_data": {
         "id": "minecraft:marker",
-        "NoGravity" : true,
-        "Silent" : true,
-        "Invulnerable" : true,
-        "CustomName": "{\"bold\":false,\"color\":\"#FF55FF\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"Spawn Submarine\",\"underlined\":false}",
-        "Tags": [
-          "color_magenta"
-        ]
+        "NoGravity": true,
+        "Silent": true,
+        "Invulnerable": true,
+        "CustomName": "{\"bold\":false,\"color\":\"#FF55FF\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"Spawn magenta Submarine\",\"underlined\":false}",
+        "Tags": ["color_magenta"]
       }
     }
   }

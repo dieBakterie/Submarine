@@ -16,6 +16,7 @@
         {"predicate": {"custom_model_data":49}, "model": "submarine:item/submarines/purple/purple_submarine_1"},
         {"predicate": {"custom_model_data":53}, "model": "submarine:item/submarines/red/red_submarine_1"},
         {"predicate": {"custom_model_data":57}, "model": "submarine:item/submarines/white/white_submarine_1"},
-        {"predicate": {"custom_model_data":61}, "model": "submarine:item/submarines/yellow/yellow_submarine_1"}
+        {"predicate": {"custom_model_data":61}, "model": "submarine:item/submarines/yellow/yellow_submarine_1"},
+        {"predicate": {"custom_model_data":65}, "model": "submarine:item/torpedo"}
     ]
 }

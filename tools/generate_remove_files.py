@@ -1,24 +1,5 @@
 import os
-
-# Liste der 16 Minecraft-Farben und deren entsprechende Hex-Codes
-colors_with_hex = {
-    'black': '#000000',
-    'blue': '#0000AA',
-    'brown': '#AA5500',
-    'cyan': '#00AAAA',
-    'gray': '#AAAAAA',
-    'green': '#00AA00',
-    'light_blue': '#55FFFF',
-    'light_gray': '#AAAAAA',
-    'lime': '#55FF55',
-    'magenta': '#FF55FF',
-    'orange': '#FFAA00',
-    'pink': '#FFAAFF',
-    'purple': '#AA00AA',
-    'red': '#FF5555',
-    'white': '#FFFFFF',
-    'yellow': '#FFFF55'
-}
+from global_functions import COLORS
 
 # Pfad für die Ausgabe-Datei
 output_dir = 'submarine/functions/remove'
@@ -31,7 +12,7 @@ custom_model_data_start = 1
 # Datei erstellen und öffnen
 with open(output_file, 'w') as file:
     # Für jede Farbe den Befehl hinzufügen
-    for index, (color, hex_code) in enumerate(colors_with_hex.items()):
+    for index, (color, hex_code) in enumerate(COLORS.items()):
         custom_model_data = custom_model_data_start + (index * 4)
         command = (
             f'execute as @s[tag=color_{color}] at @s run give @p[limit=1,sort=nearest,distance=..1,tag=submariner] '
@@ -48,4 +29,4 @@ with open(output_file, 'w') as file:
     # Zwei Leerzeilen am Ende hinzufügen
     file.write('\n')
 
-print(f'Successfully created the mcfunction file {output_file}.')
+print(f"Erfolgreich die {output_file} Datei erstellt und gespeichert im {output_dir} Verzeichnis.")
