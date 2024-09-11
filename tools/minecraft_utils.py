@@ -1,4 +1,4 @@
-import os
+import argparse, subprocess, os
 
 # Basis-Verzeichnisse und Versionskonstanten
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -36,6 +36,7 @@ def get_base_dirs():
         'functions': create_path('templates', 'functions'),
         'recipes_input': create_path('templates', 'recipes'),
         'recipes_output': create_path('submarine', 'recipe'),
+        'removes_output': create_path('submarine', 'function', 'remove'),
         'animations_input': create_path('templates', 'functions', 'animations'),
         'animations_output': create_path('submarine', 'function', 'animations'),
         'spawn_input': create_path('templates', 'functions', 'spawn'),
@@ -45,7 +46,6 @@ def get_base_dirs():
         'remove_output': create_path('submarine', 'remove')
     }
 
-# Dynamische Erstellung der Animations- und Spawn-Verzeichnisse nach Versionen
 def get_versioned_dirs(base, subdir):
     return {version: create_path(base, subdir, version) for version in VERSIONS}
 
@@ -108,3 +108,38 @@ def debug():
     print("\nFile Count:")
     for version, path in base_dirs.items():
         print(f'{version}: {count_files_in_directory(path)}')
+
+def main():
+    parser = argparse.ArgumentParser(description='Generiere Minecraft-Dateien.')
+    parser.add_argument('-a', '--animations', action='store_true', help='Erstellt die Animations-Dateien')
+    parser.add_argument('-m', '--models', action='store_true', help='Erstellt die Modell-Dateien')
+    parser.add_argument('-r', '--recipes', action='store_true', help='Erstellt die Rezept-Dateien')
+    parser.add_argument('-rm', '--remove', action='store_true', help='Erstellt die Remove-Dateien')
+    parser.add_argument('-s', '--spawn', action='store_true', help='Erstellt die Spawn-Dateien')
+    parser.add_argument('-d', '--debug', action='store_true', help='Zeigt Debug-Informationen an')
+    parser.add_argument('-c', '--clean', action='store_true', help='Löscht alle generierten Dateien')
+    parser.add_argument('-v', '--version', action='version', version='1.0', help='Zeigt die Skript-Version an')
+
+    args = parser.parse_args()
+
+    if args.animations:
+        subprocess.run(['python', 'generate_animation_files.py'])
+    if args.models:
+        subprocess.run(['python', 'generate_model_files.py'])
+    if args.recipes:
+        subprocess.run(['python', 'generate_recipe_files.py'])
+    if args.remove:
+        subprocess.run(['python', 'generate_remove_files.py'])
+    if args.spawn:
+        subprocess.run(['python', 'generate_spawn_files.py'])
+    if args.debug:
+        debug()
+    if args.clean:
+        print("Lösche generierte Dateien...")
+        subprocess.run(['python', 'clean.py'])
+
+    if any([args.animations, args.models, args.recipes, args.spawn, args.debug, args.clean]):
+        print("Fertig!")
+
+if __name__ == "__main__":
+    main()

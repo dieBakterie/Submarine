@@ -1,6 +1,7 @@
 {
   "pack": {
-    "pack_format": 37,
+    "supported_formats": [34, 38],
+    "pack_format": 38,
     "description": "by derDelphin"
   }
 }

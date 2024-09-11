@@ -31,8 +31,8 @@ execute as @a[tag=submariner] at @s run function submarine:hp
 execute as @a[tag=submariner] at @s as @e[type=item,distance=..2,limit=1,nbt={Item:{id:"minecraft:iron_block",count:1}}] as @e[name=sub,distance=..2,limit=1,scores={subhp=..99}] at @s run function submarine:hp_refill
 execute as @e[name=sub] at @s run function submarine:bar
 execute as @e[name=sub,scores={subhp=..0}] at @s run function submarine:explode
-execute as @e[name=sub,tag=subforward] at @s run function submarine:animations/animation
-execute as @e[name=sub,tag=subbackwards] at @s run function submarine:animations/animation
+execute as @e[name=sub,tag=subforward] at @s run function submarine:animations/submarine_animation
+execute as @e[name=sub,tag=subbackwards] at @s run function submarine:animations/submarine_animation
 execute as @e[name=sub,tag=subforward] at @s run function submarine:sound
 execute as @e[name=sub,tag=subbackwards] at @s run function submarine:sound
 execute as @e[name=sub] at @s run function submarine:color_change

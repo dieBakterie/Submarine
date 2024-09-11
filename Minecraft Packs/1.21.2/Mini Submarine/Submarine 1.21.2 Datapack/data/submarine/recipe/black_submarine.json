@@ -1,7 +1,7 @@
-{
+﻿{
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "submarine",
+  "group": "submarines",
   "key": {
     "b": "minecraft:iron_block",
     "c": "minecraft:chest",
@@ -19,7 +19,7 @@
     "count": 1,
     "components": {
       "minecraft:custom_name": "{\"bold\":false,\"color\":\"#000000\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"Spawn black Submarine\",\"underlined\":false}",
-      "custom_model_data": 1,
+      "minecraft:item_model": "submarine:submarines/black/black_submarine_1",
       "minecraft:lore": [
         "{\"bold\":false,\"color\":\"#000000\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"A black submarine that can be used to explore the depths of the ocean.\",\"underlined\":false}"
       ],

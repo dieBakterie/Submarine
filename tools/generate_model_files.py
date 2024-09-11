@@ -1,12 +1,11 @@
-import os
-
 from minecraft_utils import (
+    os,
     load_template,
     save_file,
     count_files_in_directory,
     create_path,
     get_base_dirs,
-    COLORS    
+    COLORS
 )
 
 def create_model_files():
@@ -37,7 +36,7 @@ def create_model_files():
             
             # Speichere die bearbeitete Datei im Ausgabe-Verzeichnis
             output_file = f'{color}_submarine_{index}.json'
-            save_file(modified_content, os.path.join(color_output_dir, output_file))
+            save_file(modified_content, create_path(color_output_dir, output_file))
             
     # Zähle die Dateien in jedem Farbverzeichnis
     color_dirs = {color: create_path(output_dir, color) for color in COLORS.keys()}

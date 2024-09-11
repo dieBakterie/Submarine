@@ -1,7 +1,7 @@
-{
+﻿{
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "submarine",
+  "group": "submarines",
   "key": {
     "b": "minecraft:iron_block",
     "c": "minecraft:chest",
@@ -14,22 +14,24 @@
     "gdp",
     "bbb"
   ],
-  "result": {
+    "result": {
     "id": "minecraft:turtle_spawn_egg",
     "count": 1,
     "components": {
       "minecraft:custom_name": "{\"bold\":false,\"color\":\"#AAAAAA\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"Spawn light_gray Submarine\",\"underlined\":false}",
-      "custom_model_data": 29,
+      "minecraft:item_model": "submarine:submarines/light_gray/light_gray_submarine_1",
       "minecraft:lore": [
         "{\"bold\":false,\"color\":\"#AAAAAA\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"A light_gray submarine that can be used to explore the depths of the ocean.\",\"underlined\":false}"
       ],
       "entity_data": {
         "id": "minecraft:marker",
-        "NoGravity": true,
-        "Silent": true,
-        "Invulnerable": true,
+        "NoGravity" : true,
+        "Silent" : true,
+        "Invulnerable" : true,
         "CustomName": "{\"bold\":false,\"color\":\"#AAAAAA\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"Spawn light_gray Submarine\",\"underlined\":false}",
-        "Tags": ["color_light_gray"]
+        "Tags": [
+          "color_light_gray"
+        ]
       }
     }
   }

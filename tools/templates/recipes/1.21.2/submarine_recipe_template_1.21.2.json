@@ -1,7 +1,7 @@
 ﻿{
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "submarine",
+  "group": "submarines",
   "key": {
     "b": "minecraft:iron_block",
     "c": "minecraft:chest",
@@ -18,8 +18,8 @@
     "id": "minecraft:turtle_spawn_egg",
     "count": 1,
     "components": {
-      "minecraft:item_name": "{\"bold\":false,\"color\":\"{hex_code}\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"Spawn {color} {color} Submarine\",\"underlined\":false}",
-      "minecraft:item_model": "minecraft:{color}/{color}_submarine_1",
+      "minecraft:custom_name": "{\"bold\":false,\"color\":\"{hex_code}\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"Spawn {color} Submarine\",\"underlined\":false}",
+      "minecraft:item_model": "submarine:submarines/{color}/{color}_submarine_1",
       "minecraft:lore": [
         "{\"bold\":false,\"color\":\"{hex_code}\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"A {color} submarine that can be used to explore the depths of the ocean.\",\"underlined\":false}"
       ],

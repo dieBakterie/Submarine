@@ -1,7 +1,7 @@
-{
+﻿{
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "submarine",
+  "group": "submarines",
   "key": {
     "b": "minecraft:iron_block",
     "c": "minecraft:chest",
@@ -14,22 +14,24 @@
     "gdp",
     "bbb"
   ],
-  "result": {
+    "result": {
     "id": "minecraft:turtle_spawn_egg",
     "count": 1,
     "components": {
       "minecraft:custom_name": "{\"bold\":false,\"color\":\"#AA00AA\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"Spawn purple Submarine\",\"underlined\":false}",
-      "custom_model_data": 49,
+      "minecraft:item_model": "submarine:submarines/purple/purple_submarine_1",
       "minecraft:lore": [
         "{\"bold\":false,\"color\":\"#AA00AA\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"A purple submarine that can be used to explore the depths of the ocean.\",\"underlined\":false}"
       ],
       "entity_data": {
         "id": "minecraft:marker",
-        "NoGravity": true,
-        "Silent": true,
-        "Invulnerable": true,
+        "NoGravity" : true,
+        "Silent" : true,
+        "Invulnerable" : true,
         "CustomName": "{\"bold\":false,\"color\":\"#AA00AA\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"Spawn purple Submarine\",\"underlined\":false}",
-        "Tags": ["color_purple"]
+        "Tags": [
+          "color_purple"
+        ]
       }
     }
   }

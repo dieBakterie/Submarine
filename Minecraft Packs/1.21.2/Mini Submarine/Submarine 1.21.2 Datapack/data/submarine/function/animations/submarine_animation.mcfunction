@@ -1,3 +1,4 @@
+#// Description: This is a function for running the submarine animations
 execute as @s run function submarine:animations/black_submarine_animation
 execute as @s run function submarine:animations/blue_submarine_animation
 execute as @s run function submarine:animations/brown_submarine_animation

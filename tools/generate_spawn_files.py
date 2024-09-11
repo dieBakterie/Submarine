@@ -1,6 +1,5 @@
-import os
-
 from minecraft_utils import (
+    os,
     load_template,
     save_file,
     get_base_dirs,
