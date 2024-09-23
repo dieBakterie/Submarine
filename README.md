@@ -1,15 +1,3 @@
 # Datapacks
 
-## Information
-
-[!CAUTIOUS]
-I'm derDelphin and **not** [Gshn28](https://www.youtube.com/@Gshn28/videos), i just extend some of his Datapacks or port them to newer versions of Minecraft. These Datapacks are originally made by him!
-
-As of now i've added the following to the Submarine Datapack of him:
-
-- animtions (forward and backwards)
-- colored versions (all 16 vanilla colors)
-
-I'll maintain compatiblity for the versions 1.21.1+, i won't support earlier versions because the breaking changes from version 1.21.1!
-
-In the future i'll port his train Datapack to 1.21.1+ too.
+Ich bin **nicht** [Gshn28](https://www.youtube.com/@Gshn28/videos)! Ich habe lediglich ein paar seiner Datapacks auf andere versionen von Minecraft aktualisiert. Ich werde wahrscheinlich nur version 1.21+ unterstützen aufgrund der in dieser Version hinzugefügten funktionen und features, welche ich in den datapacks nutze. Einige davon erleichtern mir die arbeit sehr. Ich mache das als Hobby und zum spaß, erwartet jetzt also keine regulären updates oder so. Ich bin auch kein redstone oder command Profi. Ich habe ein paar Skripte in Python, welche ich verwende um funktionen usw zu generieren. Es erleichtert mir die arbeit und nebenbei lerne ich so programmieren und wie Python funktioniert.
