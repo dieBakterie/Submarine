@@ -1,10 +1,9 @@
-from fileinput import filename
 import logging, os, shutil, argparse, subprocess, json
 from datetime import datetime
 
 # Basis-Verzeichnisse und Versionskonstanten
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-VERSIONS = ['1.21.1', '1.21.2']
+VERSIONS = [ '1.17-1.17.1', '1.18.x', '1.19.x', '1.20.0-1.20.2', '1.21.1', '1.21.3' ]
 
 # Cache für Basisverzeichnisse
 _base_dirs_cache = None
@@ -16,6 +15,8 @@ def get_base_dirs():
             'input': create_path('templates'),
             'output': create_path('submarine'),
             'logs': create_path('logs'),
+            'minecraft_utils_logs': create_path('logs', 'minecraft_utils'),
+            'zip_logs': create_path('logs', 'zip'),
             'functions': create_path('templates', 'functions'),
             'recipes_input': create_path('templates', 'recipes'),
             'recipes_output': create_path('submarine', 'recipe'),
@@ -273,6 +274,27 @@ def replicate_directory_structure(output_dir, relative_path):
 
     return target_dir
 
+def setup_logging(log_directory='logs', log_file_name='minecraft_utils.log'):
+    # Dynamischen Dateinamen basierend auf dem aktuellen Datum erstellen
+    current_date = datetime.now().strftime('%d-%m-%Y_%H-%M-%S')
+
+    log_directory = get_base_dir(log_directory)
+
+    # Erstelle das Verzeichnis, falls es nicht existiert
+    if not dir_exists(log_directory):
+        create_dir(log_directory)
+
+    log_file_name = create_path(log_directory, f'{current_date}_{log_file_name}')
+
+    # Konfiguration des Logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S',
+        filename=log_file_name,
+        filemode='w',  # 'w' für Überschreiben, 'a' für Anhängen
+    )
+
 def log_message(message, level='info'):
     """
     Loggt eine Nachricht mit dem angegebenen Level.
@@ -293,27 +315,6 @@ def log_message(message, level='info'):
         logging.error(message)
     else:
         logging.info(message)
-
-def setup_logging(log_directory='logs', log_file_name='minecraft_utils.log'):
-    # Dynamischen Dateinamen basierend auf dem aktuellen Datum erstellen
-    current_date = datetime.now().strftime('%d-%m-%Y')
-
-    log_directory = get_base_dir(log_directory)
-
-    # Erstelle das Verzeichnis, falls es nicht existiert
-    if not dir_exists(log_directory):
-        create_dir(log_directory)
-
-    log_file_name = create_path(log_directory, f'{current_date}_{log_file_name}')
-
-    # Konfiguration des Logging
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s',
-        datefmt='%Y-%m-%d %H:%M:%S',
-        filename=log_file_name,
-        filemode='w',  # 'w' für Überschreiben, 'a' für Anhängen
-    )
 
 def get_dirname(file_path):
     """
@@ -339,7 +340,7 @@ def ensure_dir_exists(directory):
 # Hauptfunktion
 def main():
 
-    setup_logging()  # Logging initialisieren
+    setup_logging('minecraft_utils_logs', 'minecraft_utils.log')
 
     parser = argparse.ArgumentParser(description='Generiere Minecraft-Dateien.')
     parser.add_argument('-a', '--animations', action='store_true', help='Erstellt die Animations-Dateien')
@@ -349,7 +350,8 @@ def main():
     parser.add_argument('-s', '--spawn', action='store_true', help='Erstellt die Spawn-Dateien')
     parser.add_argument('-d', '--debug', action='store_true', help='Zeigt Debug-Informationen an')
     parser.add_argument('-c', '--clean', action='store_true', help='Löscht alle generierten Dateien')
-    parser.add_argument('-v', '--version', action='version', version='1.0', help='Zeigt die Skript-Version an')
+    parser.add_argument('-z', '--zip', action='store_true', help='Zips the contents of versioned folders.')
+    parser.add_argument('--version', type=str, help='Specifies the version folder to process (e.g., 1.21.1).')
     parser.add_argument('-t', '--test', action='store_true', help='Startet die Tests')
 
     args = parser.parse_args()
@@ -362,6 +364,9 @@ def main():
     if args.clean:
         log_message('Cleaning up files.')
         subprocess.run(['py', 'clean.py'])
+    if args.zip:
+        log_message(f'Zipping versioned folders.')
+        subprocess.run(['py', 'generate_zip_files.py'])
     if args.debug:
         log_message('Running in debug mode.')
         subprocess.run(['py', 'debug.py'])
@@ -379,8 +384,7 @@ def main():
         subprocess.run(['py', 'generate_spawn_files.py'])
     if args.test:
         log_message('Running tests.')
-        setup_logging('logs', 'test.log')
-        get_relative_path('spawn_input', 'spawn_output')
+        subprocess.run(['py', ''])
 
 if __name__ == "__main__":
     main()

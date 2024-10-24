@@ -10,7 +10,6 @@ from minecraft_utils import (
     load_template,
     save_file,
     count_files_in_directory,
-    dir_exists,  # Diese Funktion wird verwendet, um die Existenz von Verzeichnissen zu prüfen
     COLORS,
     VERSIONS
 )
@@ -27,11 +26,6 @@ def create_animation_files():
     # Hole die Basisverzeichnisse
     animations_input_dir = get_base_dir('animations_input')
     animation_files = list_files_in_directory(animations_input_dir)
-    
-    if not animation_files:
-        log_message("Keine globalen Animation-Templates gefunden. Abbruch...")
-        return
-
     global_template_path = create_path(animations_input_dir, animation_files[0])
 
     # Hole die versionsspezifischen Verzeichnisse
@@ -43,19 +37,8 @@ def create_animation_files():
 
     # Schleife über jede Version
     for version in VERSIONS:
-        version_output_dir = versioned_animations_output_dirs.get(version)
-        version_input_dir = versioned_animations_input_dirs.get(version)
-
-        # Überprüfen, ob das Eingabeverzeichnis für die Version existiert
-        if not dir_exists(version_input_dir):
-            log_message(f"Kein Unterordner für Version {version} gefunden. Überspringe diese Version...")
-            continue
-
-        # Überprüfen, ob es Dateien im Eingabeverzeichnis gibt
-        versioned_animation_files = list_files_in_directory(version_input_dir)
-        if not versioned_animation_files:
-            log_message(f"Keine Templates für Version {version} gefunden. Überspringe diese Version...")
-            continue
+        version_output_dir = versioned_animations_output_dirs[version]
+        version_input_dir = versioned_animations_input_dirs[version]
 
         # Erstelle das Versionsspezifische Ausgabe-Verzeichnis, falls es nicht existiert
         ensure_dir_exists(version_output_dir)
@@ -69,6 +52,8 @@ def create_animation_files():
         log_message(f"{file_path_global} erfolgreich erstellt.")
 
         log_message(f"Erstelle farbspezifische Animationsdateien für Version {version}...")
+
+        versioned_animation_files = list_files_in_directory(version_input_dir)
 
         for animation_file in versioned_animation_files:
             animation_file_name = get_file_name(animation_file)
