@@ -1,0 +1,38 @@
+﻿{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "submarines",
+  "key": {
+    "b": "minecraft:iron_block",
+    "c": "minecraft:chest",
+    "g": "minecraft:glass",
+    "d": "minecraft:light_blue_dye",
+    "p": "minecraft:piston"
+  },
+  "pattern": [
+    " bc",
+    "gdp",
+    "bbb"
+  ],
+  "result": {
+    "id": "minecraft:turtle_spawn_egg",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": "{\"bold\":false,\"color\":\"#55FFFF\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"Spawn light_blue Submarine\",\"underlined\":false}",
+      "minecraft:item_model": "submarine:submarines/light_blue/light_blue_submarine_1",
+      "minecraft:lore": [
+        "{\"bold\":false,\"color\":\"#55FFFF\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"A light_blue submarine that can be used to explore the depths of the ocean.\",\"underlined\":false}"
+      ],
+      "entity_data": {
+        "id": "minecraft:marker",
+        "NoGravity": true,
+        "Silent": true,
+        "Invulnerable": true,
+        "CustomName": "{\"bold\":false,\"color\":\"#55FFFF\",\"italic\":false,\"obfuscated\":false,\"strikethrough\":false,\"text\":\"Spawn light_blue Submarine\",\"underlined\":false}",
+        "Tags": [
+          "color_light_blue"
+        ]
+      }
+    }
+  }
+}

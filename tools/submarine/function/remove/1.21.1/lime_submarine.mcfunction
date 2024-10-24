@@ -1,0 +1,4 @@
+execute as @s[tag=color_lime] at @s run give @n[type=player,tag=submariner] turtle_spawn_egg[custom_name='{"bold":false,"color":"#55FF55","italic":false,"obfuscated":false,"strikethrough":false,"text":"Spawn lime Submarine","underlined":false}',lore=['{"bold":false,"color":"#55FF55","italic":false,"obfuscated":false,"strikethrough":false,"text":"A lime submarine that can be used to explore the depths of the ocean.","underlined":false}'],hide_additional_tooltip={},custom_model_data=33,entity_data={id:"minecraft:marker",OnGround:1b,NoGravity:1b,Silent:1b,Invulnerable:1b,Tags:["color_lime"],CustomName:'{"bold":false,"color":"#55FF55","italic":false,"obfuscated":false,"strikethrough":false,"text":"Spawn lime Submarine","underlined":false}'}] 1
+execute as @s[name="Remove lime Submarine"] at @s run kill @n[tag=sub2,limit=4]
+execute as @s[name="Remove lime Submarine"] at @s run kill @s
+

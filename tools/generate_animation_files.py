@@ -10,7 +10,7 @@ from minecraft_utils import (
     load_template,
     save_file,
     count_files_in_directory,
-    dir_exists,  # Diese Funktion wird verwendet, um die Existenz von Verzeichnissen zu prüfen
+    dir_exists,
     COLORS,
     VERSIONS
 )

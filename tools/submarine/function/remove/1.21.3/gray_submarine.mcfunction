@@ -1,0 +1,4 @@
+execute as @s[tag=color_gray] at @s run give @n[type=player,tag=submariner] turtle_spawn_egg[custom_name='{"bold":false,"color":"#AAAAAA","italic":false,"obfuscated":false,"strikethrough":false,"text":"Spawn gray Submarine","underlined":false}',lore=['{"bold":false,"color":"#AAAAAA","italic":false,"obfuscated":false,"strikethrough":false,"text":"A gray submarine that can be used to explore the depths of the ocean.","underlined":false}'],hide_additional_tooltip={},item_model="submarine:submarines/gray/gray_submarine_1",entity_data={id:marker,OnGround:1b,NoGravity:1b,Silent:1b,Invulnerable:1b,Tags:["color_gray"],CustomName:'{"bold":false,"color":"#AAAAAA","italic":false,"obfuscated":false,"strikethrough":false,"text":"Spawn gray Submarine","underlined":false}'}] 1
+execute as @s[name="Remove gray Submarine"] at @s run kill @n[tag=sub2,limit=4]
+execute as @s[name="Remove gray Submarine"] at @s run kill @s
+

@@ -1,9 +1,11 @@
 from minecraft_utils import (
-    ensure_dir_exists,
     setup_logging,
     log_message,
     get_base_dir,
+    ensure_dir_exists,
+    dir_exists,
     list_files_in_directory,
+    get_file_name,
     get_versioned_dirs,
     create_path,
     load_template,
@@ -16,9 +18,21 @@ from minecraft_utils import (
 def create_remove_files():
     log_message("Erstelle Remove-Dateien...")
 
-    # Hole die Eingabe- und Ausgabe-Verzeichnisse für Remove-Dateien
+    # Hole die Eingabe-Verzeichnis für Remove-Dateien
     removes_output_dir = get_base_dir('removes_output')
+
+    # Erstelle das Ausgabe-Verzeichnis, falls es nicht existiert
+    ensure_dir_exists(removes_output_dir)
+
+    # Hole die Basisverzeichnisse
     removes_input_dir = get_base_dir('removes_input')
+    removes_files = list_files_in_directory(removes_input_dir)
+    
+    if not removes_files:
+        log_message("Keine globalen Remove-Templates gefunden. Abbruch...")
+        return
+
+    global_template_path = create_path(removes_input_dir, removes_files[0])
 
     # Hole die versionsspezifischen Verzeichnisse
     versioned_removes_output_dirs = get_versioned_dirs(removes_output_dir, '')
@@ -26,42 +40,59 @@ def create_remove_files():
 
     custom_model_data_start = 1  # Starte bei 1 für die erste Farbe
 
-    # Jetzt die farbspezifischen Dateien erstellen
-    for index, (color, hex_code) in enumerate(COLORS.items()):
-        # Berechne den Custom Model Data Wert für die aktuelle Farbe
-        custom_model_data = custom_model_data_start + (index * 4)
+    # Schleife über jede Version
+    for version in VERSIONS:
+        version_output_dir = versioned_removes_output_dirs[version]
+        version_input_dir = versioned_removes_input_dirs[version]
 
-        # Schleife über jede Version
-        for version in VERSIONS:
-            output_dir = versioned_removes_output_dirs[version]
-            input_dir = versioned_removes_input_dirs[version]
+        # Überprüfen, ob das Eingabeverzeichnis für die Version existiert
+        if not dir_exists(version_input_dir):
+            log_message(f"Kein Unterordner für Version {version} gefunden. Überspringe diese Version...")
+            continue
 
-            # Erstelle den Ausgabeordner, falls er nicht existiert
-            ensure_dir_exists(output_dir)
+        # Überprüfen, ob es Dateien im Eingabeverzeichnis gibt
+        versioned_remove_files = list_files_in_directory(version_input_dir)
+        if not versioned_remove_files:
+            log_message(f"Keine Templates für Version {version} gefunden. Überspringe diese Version...")
+            continue
 
-            # Lade die Remove-Vorlage
-            remove_files = list_files_in_directory(input_dir)
-            log_message(f'Lade Remove-Vorlage {remove_files}...')
+        # Erstelle den Ausgabeordner, falls er nicht existiert
+        ensure_dir_exists(version_output_dir)
+        
+        global_file_name = get_file_name(global_template_path)
+        file_path_global = create_path(version_output_dir, global_file_name)
+        log_message(f"Kopiere globale Removesdatei {file_path_global}...")
 
-            # Lade die Vorlage für die Remove-Datei
-            template_file = remove_files[0]
-            file_content = load_template(template_file)
+        global_template_content = load_template(global_template_path)
+        save_file(global_template_content, file_path_global)
+        log_message(f"{file_path_global} erfolgreich erstellt.")
+        
+        log_message(f"Erstelle farbspezifische Removesdateien für Version {version}...")
 
-            # Erstelle die Remove-Datei für die jeweilige Farbe und Version
-            output_file_path = create_path(output_dir, f'remove_{color}_submarine.mcfunction')
-            log_message(f'Erstelle {output_file_path}...')
+        for remove_file in versioned_remove_files:
+            remove_file_name = get_file_name(remove_file)
+            versioned_template_content = load_template(remove_file)
+            
+            # Jetzt die farbspezifischen Dateien erstellen
+            for index, (color, hex_code) in enumerate(COLORS.items()):
+                # Berechne den Custom Model Data Wert für die aktuelle Farbe
+                custom_model_data = custom_model_data_start + (index * 4)
+                output_file_path = create_path(version_output_dir, f'{color}_{remove_file_name}')
 
-            # Ersetze die Platzhalter in der Vorlage
-            file_content = file_content.replace('{color}', color).replace('hex_code', hex_code)
+                # Ersetze die Platzhalter in der Vorlage
+                file_content = versioned_template_content.replace('{color}', color).replace('hex_code', hex_code)
 
-            if version <= '1.21.1':
-                # Ersetze die Platzhalter für vorwärtsgerichtete Animation (1 bis 4)
-                for i in range(1, 5):  # Immer 4 Schritte
-                    animation_step = custom_model_data + (i - 1)
-                    file_content = file_content.replace('animation_step', str(animation_step), 1)
+                if version <= '1.21.1':
+                    # Ersetze die Platzhalter für vorwärtsgerichtete Animation (1 bis 4)
+                    for i in range(1, 5):  # Immer 4 Schritte
+                        animation_step = custom_model_data + (i - 1)
+                        file_content = file_content.replace('animation_step', str(animation_step), 1)
 
-            # Speichere die finale Datei
-            save_file(file_content, output_file_path)
+                # Speichere die finale Datei
+                save_file(file_content, output_file_path)
+                log_message(f"{output_file_path} erfolgreich erstellt.")
+                
+        log_message(f"Erfolgreich alle {len(COLORS)} farbspezifischen Removes-Dateien für Version {version} erstellt.")
 
     # Ausgabe der Ergebnisse
     log_message("Remove-Dateien in den Ausgabeverzeichnissen:")

@@ -22,7 +22,7 @@ def zip_packs_for_version(version_folder):
             log_message(f"Zipping: {pack_folder}")
 
             if os.path.isdir(pack_path):
-                # Loop through each pack folder (Resourcepack, Datapack, etc.)
+                # Loop through each pack folder
                 for content_folder in os.listdir(pack_path):
                     content_path = os.path.join(pack_path, content_folder)
                     log_message(f"Zipping: {content_folder}")

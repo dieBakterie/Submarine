@@ -1,0 +1,4 @@
+execute as @s[tag=color_white] at @s run give @n[type=player,tag=submariner] turtle_spawn_egg[custom_name='{"bold":false,"color":"#FFFFFF","italic":false,"obfuscated":false,"strikethrough":false,"text":"Spawn white Submarine","underlined":false}',lore=['{"bold":false,"color":"#FFFFFF","italic":false,"obfuscated":false,"strikethrough":false,"text":"A white submarine that can be used to explore the depths of the ocean.","underlined":false}'],hide_additional_tooltip={},item_model="submarine:submarines/white/white_submarine_1",entity_data={id:marker,OnGround:1b,NoGravity:1b,Silent:1b,Invulnerable:1b,Tags:["color_white"],CustomName:'{"bold":false,"color":"#FFFFFF","italic":false,"obfuscated":false,"strikethrough":false,"text":"Spawn white Submarine","underlined":false}'}] 1
+execute as @s[name="Remove white Submarine"] at @s run kill @n[tag=sub2,limit=4]
+execute as @s[name="Remove white Submarine"] at @s run kill @s
+

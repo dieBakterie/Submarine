@@ -52,6 +52,7 @@ def create_model_files():
             output_file_path = create_path(color_output_dir, output_file_name)
             save_file(modified_content, output_file_path)
             log_message(f"Modell-Datei {output_file_name} erfolgreich erstellt.")
+
     log_message("Modell-Dateien erfolgreich erstellt.")
 
     # Zähle Dateien und zeige zusammengefasste Ergebnisse

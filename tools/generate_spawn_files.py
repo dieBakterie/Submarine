@@ -4,6 +4,7 @@ from minecraft_utils import (
     setup_logging,
     log_message,
     get_base_dir,
+    dir_exists,
     list_files_in_directory,
     get_file_name,
     get_versioned_dirs,
@@ -38,6 +39,17 @@ def create_spawn_files():
     for version in VERSIONS:
         version_output_dir = versioned_spawns_output_dirs[version]
         version_input_dir = versioned_spawns_input_dirs[version]
+        
+        # Überprüfen, ob das Eingabeverzeichnis für die Version existiert
+        if not dir_exists(version_input_dir):
+            log_message(f"Kein Unterordner für Version {version} gefunden. Überspringe diese Version...")
+            continue
+
+        # Überprüfen, ob es Dateien im Eingabeverzeichnis gibt
+        versioned_animation_files = list_files_in_directory(version_input_dir)
+        if not versioned_animation_files:
+            log_message(f"Keine Templates für Version {version} gefunden. Überspringe diese Version...")
+            continue
 
         # Erstelle das Versionsspezifische Ausgabe-Verzeichnis, falls es nicht existiert
         ensure_dir_exists(version_output_dir)
@@ -86,7 +98,7 @@ def create_spawn_files():
         log_message(f"Erfolgreich alle {len(COLORS)} farbspezifischen spawn-Dateien für Version {version} erstellt.")
 
     # Logge die Anzahl der Dateien pro Version
-    log_message("Datei-Anzahl pro Version in den spawns Ausgabe-Verzeichnissen:")
+    log_message("Datei-Anzahl pro Version in den spawn Ausgabe-Verzeichnissen:")
     for version, path in versioned_spawns_output_dirs.items():
         file_count = count_files_in_directory(path, '.mcfunction')
         log_message(f"{version}: {file_count} Dateien")
