@@ -7,7 +7,7 @@ execute as @e[tag=iron_minion,tag=lvl1] at @s if entity @e[tag=iron.gen,limit=24
 #customcrafting
 execute as @e[type=item,nbt={Item:{id:"minecraft:iron_ingot",Count:64b}},tag=lvl1] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:wooden_pickaxe",Count:1b}},tag=lvl1] run tag @p add iron.crafter_lvl1
 execute as @e[type=item,nbt={Item:{id:"minecraft:iron_ingot",Count:64b}},tag=lvl1] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:wooden_pickaxe",Count:1b}},tag=lvl1] run kill @e[type=item,distance=..0.75]
-execute as @a[tag=iron.crafter_lvl1] run 
+execute as @a[tag=iron.crafter_lvl1] run
 execute as @a[tag=iron.crafter_lvl1] run give @s tripwire_hook{display:{Name:'{"text":"iron remover"}'}}
 execute as @a[tag=iron.crafter_lvl1,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"iron remover","color":"dark_purple"}'}}}]}] run tag @s add iron.crafter_lvl1
 execute as @e[tag=iron_minion,tag=lvl1] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"iron remover"}'}}}}] run tag @p add iron.crafter_lvl1

@@ -19,7 +19,7 @@ scoreboard players add @e[tag=coal_minion] coal_gen_delay 1
 execute as @e[scores={coal_gen_delay=140}] at @s positioned as @e[distance=..3,tag=!coal_obfuscated,tag=coal.gen,sort=random,limit=1] run setblock ^ ^ ^ coal_ore
 execute as @e[scores={coal_gen_delay=140}] run scoreboard players add @s coal_ore_counter 1
 execute as @e[scores={coal_ore_counter=24}] at @s run tag @e[tag=coal_obfuscated,limit=1,sort=random,distance=..3] add coal_selected
-execute as @e[scores={coal_ore_counter=24}] at @s if entity @e[tag=coal_selected,sort=nearest,limit=1] run tag @s[scores={coal_ore_counter=24}] add run 
+execute as @e[scores={coal_ore_counter=24}] at @s if entity @e[tag=coal_selected,sort=nearest,limit=1] run tag @s[scores={coal_ore_counter=24}] add run
 execute as @e[scores={coal_gen_delay=140,coal_ore_counter=1..}] run scoreboard players set @s coal_gen_delay 0
 
 #mining

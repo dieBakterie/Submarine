@@ -1,0 +1,37 @@
+{
+	"custom.submove": {
+	"sounds": [
+		{
+			"name": "custom/submove",
+			"stream": true
+		}]
+	},
+	"custom.subexplode": {
+	"sounds": [
+		{
+			"name": "custom/subexplode",
+			"stream": true
+		}]
+	},
+	"custom.subsonar": {
+	"sounds": [
+		{
+			"name": "custom/subsonar",
+			"stream": true
+		}]
+	},
+	"custom.subtorp": {
+	"sounds": [
+		{
+			"name": "custom/subtorp",
+			"stream": true
+		}]
+	},
+	"custom.subcharge": {
+	"sounds": [
+		{
+			"name": "custom/subcharge",
+			"stream": true
+		}]
+	}
+}

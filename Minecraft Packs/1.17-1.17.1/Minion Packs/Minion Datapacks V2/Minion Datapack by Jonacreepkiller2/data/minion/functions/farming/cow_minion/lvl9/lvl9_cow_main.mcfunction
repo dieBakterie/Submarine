@@ -6,7 +6,7 @@ execute as @a[scores={cow_killer=1}] if entity @e[tag=cow,limit=4] run scoreboar
 #get minion
 execute as @e[tag=cow_minion,tag=lvl9] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"cow remover"}'}}}}] run tag @p add cow.crafter_lvl9
 execute as @e[tag=cow_minion,tag=lvl9] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"cow remover"}'}}}}] run kill @e[type=!player,distance=..4]
-execute as @a[tag=cow.crafter_lvl9] run 
+execute as @a[tag=cow.crafter_lvl9] run
 execute as @a[tag=cow.crafter_lvl9] run give @s tripwire_hook{display:{Name:'{"text":"cow remover"}'}}
 execute as @a[tag=cow.crafter_lvl9,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"cow remover"}'}}}]}] run tag @s remove cow.crafter_lvl9
 

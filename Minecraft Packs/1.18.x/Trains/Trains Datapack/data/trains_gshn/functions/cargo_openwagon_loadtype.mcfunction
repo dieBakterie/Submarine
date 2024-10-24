@@ -1,0 +1,14 @@
+execute if score @s rptrain_crgtype matches 1 run replaceitem entity @e[type=minecraft:armor_stand,tag=rptrain_model_front,tag=rptrain_cargo,distance=..1] armor.head minecraft:leather_boots{CustomModelData:74}
+execute if score @s rptrain_crgtype matches 1 run replaceitem entity @e[type=minecraft:armor_stand,tag=rptrain_model_back,tag=rptrain_cargo,distance=..1] armor.head minecraft:leather_boots{CustomModelData:75}
+execute if score @s rptrain_crgtype matches 2 run replaceitem entity @e[type=minecraft:armor_stand,tag=rptrain_model_front,tag=rptrain_cargo,distance=..1] armor.head minecraft:leather_boots{CustomModelData:76}
+execute if score @s rptrain_crgtype matches 2 run replaceitem entity @e[type=minecraft:armor_stand,tag=rptrain_model_back,tag=rptrain_cargo,distance=..1] armor.head minecraft:leather_boots{CustomModelData:77}
+execute if score @s rptrain_crgtype matches 3 run replaceitem entity @e[type=minecraft:armor_stand,tag=rptrain_model_front,tag=rptrain_cargo,distance=..1] armor.head minecraft:leather_boots{CustomModelData:78}
+execute if score @s rptrain_crgtype matches 3 run replaceitem entity @e[type=minecraft:armor_stand,tag=rptrain_model_back,tag=rptrain_cargo,distance=..1] armor.head minecraft:leather_boots{CustomModelData:79}
+execute if score @s rptrain_crgtype matches 4 run replaceitem entity @e[type=minecraft:armor_stand,tag=rptrain_model_front,tag=rptrain_cargo,distance=..1] armor.head minecraft:leather_boots{CustomModelData:80}
+execute if score @s rptrain_crgtype matches 4 run replaceitem entity @e[type=minecraft:armor_stand,tag=rptrain_model_back,tag=rptrain_cargo,distance=..1] armor.head minecraft:leather_boots{CustomModelData:81}
+execute if score @s rptrain_crgtype matches 5 run replaceitem entity @e[type=minecraft:armor_stand,tag=rptrain_model_front,tag=rptrain_cargo,distance=..1] armor.head minecraft:leather_boots{CustomModelData:82}
+execute if score @s rptrain_crgtype matches 5 run replaceitem entity @e[type=minecraft:armor_stand,tag=rptrain_model_back,tag=rptrain_cargo,distance=..1] armor.head minecraft:leather_boots{CustomModelData:83}
+execute if score @s rptrain_crgtype matches 6 run replaceitem entity @e[type=minecraft:armor_stand,tag=rptrain_model_front,tag=rptrain_cargo,distance=..1] armor.head minecraft:leather_boots{CustomModelData:84}
+execute if score @s rptrain_crgtype matches 6 run replaceitem entity @e[type=minecraft:armor_stand,tag=rptrain_model_back,tag=rptrain_cargo,distance=..1] armor.head minecraft:leather_boots{CustomModelData:85}
+execute if score @s rptrain_crgtype matches 7 run replaceitem entity @e[type=minecraft:armor_stand,tag=rptrain_model_front,tag=rptrain_cargo,distance=..1] armor.head minecraft:leather_boots{CustomModelData:86}
+execute if score @s rptrain_crgtype matches 7 run replaceitem entity @e[type=minecraft:armor_stand,tag=rptrain_model_back,tag=rptrain_cargo,distance=..1] armor.head minecraft:leather_boots{CustomModelData:87}

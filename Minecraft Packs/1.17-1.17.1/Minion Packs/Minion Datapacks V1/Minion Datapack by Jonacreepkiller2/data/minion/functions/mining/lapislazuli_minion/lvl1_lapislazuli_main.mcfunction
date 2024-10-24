@@ -7,7 +7,7 @@ execute as @e[tag=lapis_minion,tag=lvl1] at @s if entity @e[distance=..3,tag=lap
 #customcrafting
 execute as @e[type=item,nbt={Item:{id:"minecraft:lapis_lazuli",Count:64b}}] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:wooden_pickaxe",Count:1b}}] run tag @p add lapis.crafter_lvl1
 execute as @e[type=item,nbt={Item:{id:"minecraft:lapis_lazuli",Count:64b}}] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:wooden_pickaxe",Count:1b}}] run kill @e[type=item,distance=..0.75]
-execute as @a[tag=lapis.crafter_lvl1] run 
+execute as @a[tag=lapis.crafter_lvl1] run
 execute as @a[tag=lapis.crafter_lvl1] run give @s tripwire_hook{display:{Name:'{"text":"lapis remover"}'}
 execute as @a[tag=lapis.crafter_lvl1,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"lapis remover"}'}}}]}] run tag @s remove lapis.crafter_lvl1
 execute as @e[tag=lapis_minion,tag=lvl1] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"lapis remover"}'}}}}] run tag @p add lapis.crafter_lvl1

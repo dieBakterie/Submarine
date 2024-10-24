@@ -8,7 +8,7 @@ execute as @e[tag=lapis_minion,tag=lvl2] at @s if entity @e[distance=..3,tag=lap
 execute as @e[tag=lapis_minion,tag=lvl2] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"lapis remover"}'}}}}] run tag @p add lapis.crafter_lvl2
 execute as @e[tag=lapis_minion,tag=lvl2] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"lapis remover"}'}}}}] run fill ^-2 ^-1 ^-2 ^2 ^-1 ^2 air replace lapis_ore
 execute as @e[tag=lapis_minion,tag=lvl2] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"lapis remover"}'}}}}] run kill @e[type=!player,distance=..3]
-execute as @a[tag=lapis.crafter_lvl2] run 
+execute as @a[tag=lapis.crafter_lvl2] run
 execute as @a[tag=lapis.crafter_lvl2] run give @s tripwire_hook{display:{Name:'{"text":"lapis remover"}'}}
 execute as @a[tag=lapis.crafter_lvl2,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"lapis remover"}'}}}]}] run tag @s remove lapis.crafter_lvl2
 

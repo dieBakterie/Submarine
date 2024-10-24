@@ -1,57 +1,72 @@
 from minecraft_utils import (
-    os,
+    ensure_dir_exists,
+    setup_logging,
+    log_message,
+    get_base_dir,
+    dir_exists,
+    create_dir,
+    list_files_in_directory,
+    create_path,
+    get_file_name,
     load_template,
     save_file,
     count_files_in_directory,
-    create_path,
-    get_base_dirs,
     COLORS
 )
 
 def create_model_files():
-    print("Erstelle Modell-Dateien...")
-    base_dirs = get_base_dirs()
-    input_dir = base_dirs['models_input']
-    output_dir = base_dirs['models_output']
-    
-    model_files = [
-        'submarines_model_template_1.json',
-        'submarines_model_template_2.json',
-        'submarines_model_template_3.json',
-        'submarines_model_template_4.json'
-    ]
-    
-    # Schleife über jede Modellvorlage
-    for model_file in model_files:
-        for color in COLORS.keys():
-            # Erstelle das Ausgabe-Verzeichnis für jede Farbe
-            color_output_dir = create_path(output_dir, color)
-            os.makedirs(color_output_dir, exist_ok=True)
-            
-            # Lade und bearbeite das Modell-Template
-            model_path = create_path(input_dir, model_file)
-            index = model_file.split('_')[3].split('.')[0]  # Index aus Dateiname extrahieren
-            content = load_template(model_path)
-            modified_content = content.replace('block/quartz_block_top', f'block/{color}_concrete')
-            
-            # Speichere die bearbeitete Datei im Ausgabe-Verzeichnis
-            output_file = f'{color}_submarine_{index}.json'
-            save_file(modified_content, create_path(color_output_dir, output_file))
-            
-    # Zähle die Dateien in jedem Farbverzeichnis
-    color_dirs = {color: create_path(output_dir, color) for color in COLORS.keys()}
+    input_dir = get_base_dir('models_input')
+    output_dir = get_base_dir('models_output')
+
+    # Erstelle das Ausgabe-Verzeichnis, falls es nicht existiert
+    ensure_dir_exists(output_dir)
+
+    # Liste alle Modellvorlagen auf
+    model_files = list_files_in_directory(input_dir)
+
+    # Farbverzeichnisse einmalig erstellen
+    log_message("Starte die Erstellung der Modellverzeichnisse...", 'warning')
+    color_dirs = {}
+    for color in COLORS.keys():
+        color_output_dir = create_path(output_dir, color)
+        if not dir_exists(color_output_dir):
+            create_dir(color_output_dir)
+            log_message(f"Verzeichnis für {color} erstellt.", 'warning')
+        color_dirs[color] = color_output_dir
+    log_message("Modellverzeichnisse erfolgreich erstellt.")
+
+    # Verarbeitung der Modellvorlagen
+    log_message("Starte die Erstellung der Modelldateien...")
+    for model_file_path in model_files:
+        model_file_name = get_file_name(model_file_path)
+
+        # Lade die Modellvorlage
+        content = load_template(model_file_path)
+
+        # Für jede Farbe die spezifischen Modell-Dateien erstellen
+        for color, color_output_dir in color_dirs.items():
+            modified_content = content.replace('quartz_block_top', f'{color}_concrete')
+
+            # Erstelle die Modell-Datei
+            output_file_name = f'{color}_{model_file_name}'  # Fügt den Farbnamen vor den Dateinamen
+            output_file_path = create_path(color_output_dir, output_file_name)
+            save_file(modified_content, output_file_path)
+            log_message(f"Modell-Datei {output_file_name} erfolgreich erstellt.")
+    log_message("Modell-Dateien erfolgreich erstellt.")
+
+    # Zähle Dateien und zeige zusammengefasste Ergebnisse
     file_count_per_color = {color: count_files_in_directory(dir_path) for color, dir_path in color_dirs.items()}
     total_files = sum(file_count_per_color.values())
-    
-    # Ausgabe der Verzeichnisstruktur und Dateianzahl
-    print("\nCreating Color Directories in Models Output:")
-    for color, path in color_dirs.items():
-        print(f'{color} Directory: {path}')
-        
-    print("\nFile Count per Color Directory:")
-    for color, count in file_count_per_color.items():
-        print(f'{color}: {count} files')
-        
-    print(f"Erfolgreich {total_files} json-Dateien in {output_dir} erstellt.")
 
+    # Ausgabe der Ergebnisse
+    log_message("Verzeichnisübersicht:")
+    for color, path in color_dirs.items():
+        log_message(f"{color.capitalize()} - {file_count_per_color[color]} Dateien")
+
+    log_message(f"Insgesamt {total_files} JSON-Dateien erfolgreich erstellt.")
+
+# Setup Logging aufrufen
+setup_logging('model_logs', 'generate_model_files.log')
+
+# Funktion aufrufen
 create_model_files()

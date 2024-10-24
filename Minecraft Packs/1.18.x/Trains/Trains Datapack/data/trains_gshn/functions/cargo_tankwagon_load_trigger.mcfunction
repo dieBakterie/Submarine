@@ -1,0 +1,3 @@
+execute if score @s rptrain_crgtype matches 1 if entity @e[type=item,distance=..3,limit=1,tag=!rptrain_unloaded,nbt={Item:{id:"minecraft:water_bucket",Count:1b}}] run function trains_gshn:cargo_tankwagon_load1
+execute if score @s rptrain_crgtype matches 2 if entity @e[type=item,distance=..3,limit=1,tag=!rptrain_unloaded,nbt={Item:{id:"minecraft:lava_bucket",Count:1b}}] run function trains_gshn:cargo_tankwagon_load2
+execute if score @s rptrain_crgtype matches 3 if entity @e[type=item,distance=..3,limit=1,tag=!rptrain_unloaded,nbt={Item:{id:"minecraft:milk_bucket",Count:1b}}] run function trains_gshn:cargo_tankwagon_load3

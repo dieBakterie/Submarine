@@ -8,7 +8,7 @@ execute as @e[tag=quarz_minion,tag=lvl4] at @s if entity @e[tag=quarz.gen,limit=
 execute as @e[tag=quarz_minion,tag=lvl4] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"quarz remover"}'}}}}] run tag @p add quarz.crafter_lvl4
 execute as @e[tag=quarz_minion,tag=lvl4] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"quarz remover"}'}}}}] run fill ^-2 ^-1 ^-2 ^2 ^-1 ^2 air replace nether_quartz_ore
 execute as @e[tag=quarz_minion,tag=lvl4] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"quarz remover"}'}}}}] run kill @e[type=!player,distance=..3]
-execute as @a[tag=quarz.crafter_lvl4] run 
+execute as @a[tag=quarz.crafter_lvl4] run
 execute as @a[tag=quarz.crafter_lvl4] run give @s tripwire_hook{display:{Name:'{"text":"quarz remover"}'}}
 execute as @a[tag=quarz.crafter_lvl4,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"quarz remover"}'}}}]}] run tag @s remove quarz.crafter_lvl4
 

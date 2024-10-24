@@ -1,106 +1,99 @@
+import os
 from minecraft_utils import (
-    os,
+    ensure_dir_exists,
+    setup_logging,
+    log_message,
+    get_base_dir,
+    list_files_in_directory,
+    get_file_name,
+    get_versioned_dirs,
+    create_path,
     load_template,
     save_file,
-    get_base_dirs,
-    get_versioned_dirs,
     count_files_in_directory,
-    create_path,
-    COLORS
+    COLORS,
+    VERSIONS
 )
 
 def create_spawn_files():
-    print("Erstelle Spawn-Dateien...")
-    base_dirs = get_base_dirs()
-    
-    # Hole die versionierten Verzeichnisse für die Spawn-Dateien
-    output_dirs = get_versioned_dirs(base_dirs['spawn_output'], '')
-    input_dirs = get_versioned_dirs(base_dirs['spawn_input'], '')
-    
-    custom_model_data_start = 1  # Starte bei 1 für die erste Farbe
-    
-    # Schleife über jede Farbe mit Index zur Berechnung von Custom Model Data
-    for index, (color, hex_code) in enumerate(COLORS.items()):
-        # Berechne den Custom Model Data Wert für die aktuelle Farbe
-        custom_model_data = custom_model_data_start + (index * 4)
-        
-        # Schleife über jede Version
-        for version, output_dir in output_dirs.items():
-            
-            # Erstelle den Ausgabeordner, falls er nicht existiert
-            os.makedirs(output_dir, exist_ok=True)
-            
-            # Erstelle Unterverzeichnis 'with_attributes' falls nötig
-            output_dir_with_attributes = create_path(output_dir, 'with_attributes')
-            os.makedirs(output_dir_with_attributes, exist_ok=True)
-            
-            # Lade die versionsspezifischen Spawn-Vorlagen
-            version_template_path = create_path(input_dirs[version], f'spawn_{version}.mcfunction')
-            version_template_path_with_attributes = create_path(input_dirs[version], f'spawn_{version}_with_attributes.mcfunction')
-            
-            # Normale Spawn-Datei verarbeiten
-            if os.path.exists(version_template_path):
-                output_file_path = create_path(output_dir, f'spawn_{color}_submarine.mcfunction')
-                version_template_content = load_template(version_template_path)
-                
-                # Ersetze die Platzhalter in der versionsspezifischen Vorlage
-                file_content = version_template_content.replace('{color}', color)
-                
-                # Ersetze die Platzhalter für Custom Model Data
-                for i in range(1, 5):  # Immer 4 Schritte
-                    animation_step = custom_model_data + (i - 1)
-                    file_content = file_content.replace('animation_step', str(animation_step), 1)
-                    
-                # Verwende save_file, um die Datei zu speichern
-                save_file(file_content, output_file_path)
-                
-            # Datei mit Attributen verarbeiten
-            if os.path.exists(version_template_path_with_attributes):
-                output_file_path_with_attributes = create_path(output_dir_with_attributes, f'spawn_{color}_submarine_with_attributes.mcfunction')
-                version_template_content_with_attributes = load_template(version_template_path_with_attributes)
-                
-                # Ersetze die Platzhalter in der Vorlage mit Attributen
-                file_content = version_template_content_with_attributes.replace('{color}', color)
-                
-                # Ersetze die Platzhalter für Custom Model Data
-                for i in range(1, 5):  # Immer 4 Schritte
-                    animation_step = custom_model_data + (i - 1)
-                    file_content = file_content.replace('animation_step', str(animation_step), 1)
-                    
-                # Verwende save_file, um die Datei mit Attributen zu speichern
-                save_file(file_content, output_file_path_with_attributes)
-                
-            # Lade die versionsspezifischen Spawn-Test-Vorlagen
-            test_template_path = create_path(input_dirs[version], 'test', f'spawn_{version}_test.mcfunction')
-            if os.path.exists(test_template_path):
-                test_output_dir = create_path(output_dir, 'test')
-                os.makedirs(test_output_dir, exist_ok=True)
-                
-                test_template_content = load_template(test_template_path)
-                
-                # Ersetze die Platzhalter in der versionsspezifischen Test Vorlage
-                file_content = test_template_content.replace('{color}', color).replace('{hex_code}', hex_code)
-                
-                # Ersetze die Platzhalter für Custom Model Data
-                for i in range(1, 5):  # Immer 4 Schritte
-                    animation_step = custom_model_data + (i - 1)
-                    file_content = file_content.replace('animation_step', str(animation_step), 1)
-                    
-                # Verwende save_file, um die Test-Datei zu speichern
-                output_test_file_path = create_path(test_output_dir, f'spawn_test_{color}_submarine.mcfunction')
-                save_file(file_content, output_test_file_path)
-                
-    # Ausgabe der Ergebnisse
-    print("\nCreating Spawn Directories:")
-    for version, path in output_dirs.items():
-        print(f'{version} Directory: {path}')
-        
-    print("\nFile Count per Spawn Directory:")
-    for version, path in output_dirs.items():
-        file_count = count_files_in_directory(path)
-        print(f'{version}: {file_count} files')
-        
-    total_files = sum(count_files_in_directory(path) for path in output_dirs.values())
-    print(f'Erfolgreich {total_files} mcfunction-Dateien erstellt und gespeichert in allen Verzeichnissen.')
+    log_message("Erstelle spawns-Dateien...")
+
+    # Hole das Ausgabe-Verzeichnis
+    spawns_output_dir = get_base_dir('spawns_output')
+
+    # Erstelle das Ausgabe-Verzeichnis, falls es nicht existiert
+    ensure_dir_exists(spawns_output_dir)
+
+    # Hole die Basisverzeichnisse
+    spawns_input_dir = get_base_dir('spawns_input')
+
+    # Hole die versionsspezifischen Verzeichnisse
+    versioned_spawns_output_dirs = get_versioned_dirs(spawns_output_dir, '')
+    versioned_spawns_input_dirs = get_versioned_dirs(spawns_input_dir, '')
+
+    # Starte bei 1 für die erste Farbe
+    custom_model_data_start = 1
+
+    # Schleife über jede Version
+    for version in VERSIONS:
+        version_output_dir = versioned_spawns_output_dirs[version]
+        version_input_dir = versioned_spawns_input_dirs[version]
+
+        # Erstelle das Versionsspezifische Ausgabe-Verzeichnis, falls es nicht existiert
+        ensure_dir_exists(version_output_dir)
+
+        log_message(f"Erstelle farbspezifische spawnsdateien für Version {version}...")
+
+        # Funktion, um die Dateien in einem Verzeichnis zu verarbeiten
+        def process_directory(directory, output_directory):
+            versioned_spawn_files = list_files_in_directory(directory)
+
+            for spawn_file in versioned_spawn_files:
+                spawn_file_name = get_file_name(spawn_file)
+                versioned_template_content = load_template(spawn_file)
+
+                for index, (color, hex_code) in enumerate(COLORS.items()):
+                    custom_model_data = custom_model_data_start + (index * 4)
+                    output_file_path = create_path(output_directory, f"{color}_{spawn_file_name}")
+
+                    # Ersetze die Platzhalter in der Vorlage
+                    file_content = versioned_template_content.replace('{color}', color).replace('hex_code', hex_code)
+
+                    # Für Versionen <= 1.21.1 müssen Animationen ersetzt werden
+                    if version <= '1.21.1':
+                        for i in range(1, 5):
+                            animation_step = custom_model_data + (i - 1)
+                            file_content = file_content.replace('animation_step', str(animation_step), 1)
+
+                    # Datei speichern
+                    save_file(file_content, output_file_path)
+                    log_message(f"{output_file_path} erfolgreich erstellt.")
+
+        # Verarbeite die Dateien im Hauptverzeichnis der Version
+        process_directory(version_input_dir, version_output_dir)
+
+        # Verarbeite die Unterordner innerhalb des Versionsverzeichnisses
+        for subdir in os.listdir(version_input_dir):
+            subdir_path = create_path(version_input_dir, subdir)
+
+            if os.path.isdir(subdir_path):
+                # Repliziere die Verzeichnisstruktur im Ausgabe-Verzeichnis
+                output_subdir = create_path(version_output_dir, subdir)
+                ensure_dir_exists(output_subdir)
+
+                process_directory(subdir_path, output_subdir)
+
+        log_message(f"Erfolgreich alle {len(COLORS)} farbspezifischen spawn-Dateien für Version {version} erstellt.")
+
+    # Logge die Anzahl der Dateien pro Version
+    log_message("Datei-Anzahl pro Version in den spawns Ausgabe-Verzeichnissen:")
+    for version, path in versioned_spawns_output_dirs.items():
+        file_count = count_files_in_directory(path, '.mcfunction')
+        log_message(f"{version}: {file_count} Dateien")
+
+    total_files = sum(count_files_in_directory(path, '.mcfunction') for path in versioned_spawns_output_dirs.values())
+    log_message(f"Erfolgreich alle {total_files} mcfunction-Dateien fürs spawnen erstellt.")
+
+setup_logging('spawn_logs', 'generate_spawn_files.log')
 
 create_spawn_files()

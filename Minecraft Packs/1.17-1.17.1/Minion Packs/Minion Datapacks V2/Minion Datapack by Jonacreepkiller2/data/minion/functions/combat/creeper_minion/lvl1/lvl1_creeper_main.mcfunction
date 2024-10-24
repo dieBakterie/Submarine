@@ -6,7 +6,7 @@ execute as @a[scores={creeper_killer=1}] if entity @e[tag=creeper,limit=4] run s
 #customcrafting
 execute as @e[type=item,nbt={Item:{id:"minecraft:gunpowder",Count:64b}}] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:wooden_sword",Count:1b}}] run tag @p add creeper.crafter_lvl1
 execute as @e[type=item,nbt={Item:{id:"minecraft:gunpowder",Count:64b}}] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:wooden_sword",Count:1b}}] run kill @e[type=item,distance=..0.75]
-execute as @a[tag=creeper.crafter_lvl1] run 
+execute as @a[tag=creeper.crafter_lvl1] run
 execute as @a[tag=creeper.crafter_lvl1] run give @s tripwire_hook{display:{Name:'{"text":"creeper remover"}'}}
 execute as @a[tag=creeper.crafter_lvl1,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"creeper remover"}'}}}]}] run tag @s remove creeper.crafter_lvl1
 execute as @e[tag=creeper_minion,tag=lvl1] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"creeper remover"}'}}}}] run tag @p add creeper.crafter_lvl1

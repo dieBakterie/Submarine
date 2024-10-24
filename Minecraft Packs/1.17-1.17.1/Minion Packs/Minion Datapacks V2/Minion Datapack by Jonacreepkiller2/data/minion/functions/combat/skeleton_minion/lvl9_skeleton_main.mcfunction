@@ -6,7 +6,7 @@ execute as @a[scores={skeleton_killer=1}] if entity @e[tag=skeleton,limit=4] run
 #get minion
 execute as @e[tag=skeleton_minion,tag=lvl9] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"skeleton remover"}'}}}}] run tag @p add skeleton.crafter_lvl9
 execute as @e[tag=skeleton_minion,tag=lvl9] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"skeleton remover"}'}}}}] run kill @e[type=!player,distance=..4]
-execute as @a[tag=skeleton.crafter_lvl9] run 
+execute as @a[tag=skeleton.crafter_lvl9] run
 execute as @a[tag=skeleton.crafter_lvl9] run give @s tripwire_hook{display:{Name:'{"text":"skeleton remover"}'}}
 execute as @a[tag=skeleton.crafter_lvl9,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"skeleton remover"}'}}}]}] run tag @s remove skeleton.crafter_lvl9
 

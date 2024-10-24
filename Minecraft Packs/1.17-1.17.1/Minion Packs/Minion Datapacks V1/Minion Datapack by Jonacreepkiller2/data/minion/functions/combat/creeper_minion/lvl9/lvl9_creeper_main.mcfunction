@@ -6,7 +6,7 @@ execute as @a[scores={creeper_killer=1}] if entity @e[tag=creeper,limit=4] run s
 #get minion
 execute as @e[tag=creeper_minion,tag=lvl9] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"creeper remover"}'}}}}] run tag @p add creeper.crafter_lvl9
 execute as @e[tag=creeper_minion,tag=lvl9] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"creeper remover"}'}}}}] run kill @e[type=!player,distance=..4]
-execute as @a[tag=creeper.crafter_lvl9] run 
+execute as @a[tag=creeper.crafter_lvl9] run
 execute as @a[tag=creeper.crafter_lvl9] run give @s tripwire_hook{display:{Name:'{"text":"creeper remover"}'}}
 execute as @a[tag=creeper.crafter_lvl9,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"creeper remover"}'}}}]}] run tag @s remove creeper.crafter_lvl9
 

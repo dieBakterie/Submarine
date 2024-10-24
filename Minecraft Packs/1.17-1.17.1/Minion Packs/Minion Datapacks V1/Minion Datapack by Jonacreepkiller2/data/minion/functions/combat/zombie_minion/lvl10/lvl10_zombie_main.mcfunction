@@ -6,7 +6,7 @@ execute as @a[scores={zombie_killer=1}] if entity @e[tag=zombie,limit=4] run sco
 #get minion
 execute as @e[tag=zombie_minion,tag=lvl10] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"zombie remover"}'}}}}] run tag @p add zombie.crafter_lvl10
 execute as @e[tag=zombie_minion,tag=lvl10] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"zombie remover"}'}}}}] run kill @e[type=!player,distance=..4]
-execute as @a[tag=zombie.crafter_lvl10] run 
+execute as @a[tag=zombie.crafter_lvl10] run
 execute as @a[tag=zombie.crafter_lvl10] run give @s tripwire_hook{display:{Name:'{"text":"zombie remover"}'}}
 execute as @a[tag=zombie.crafter_lvl10,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"zombie remover"}'}}}]}] run tag @s remove zombie.crafter_lvl10
 

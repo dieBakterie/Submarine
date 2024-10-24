@@ -7,7 +7,7 @@ execute as @e[tag=redstone_minion,tag=lvl1] at @s if entity @e[tag=redstone.gen,
 #customcrafting
 execute as @e[type=item,nbt={Item:{id:"minecraft:redstone",Count:64b}}] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:wooden_pickaxe",Count:1b}},tag=lvl1] run tag @p add redstone.crafter_lvl1
 execute as @e[type=item,nbt={Item:{id:"minecraft:redstone",Count:64b}}] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:wooden_pickaxe",Count:1b}},tag=lvl1] run kill @e[type=item,distance=..0.75]
-execute as @a[tag=redstone.crafter_lvl1] run 
+execute as @a[tag=redstone.crafter_lvl1] run
 execute as @a[tag=redstone.crafter_lvl1] run give @s tripwire_hook{display:{Name:'{"text":"redstone remover"}'}}
 execute as @a[tag=redstone.crafter_lvl1,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"redstone remover"}'}}}]}] run tag @s remove redstone.crafter_lvl1
 execute as @e[tag=redstone_minion,tag=lvl1] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"redstone remover"}'}}}}] run tag @p add redstone.crafter_lvl1

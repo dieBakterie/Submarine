@@ -6,7 +6,7 @@ execute as @a[scores={slime_killer=1}] if entity @e[tag=slime,limit=4] run score
 #get minion
 execute as @e[tag=slime_minion,tag=lvl9] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"slime remover"}'}}}}] run tag @p add slime.crafter_lvl9
 execute as @e[tag=slime_minion,tag=lvl9] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"slime remover"}'}}}}] run kill @e[type=!player,distance=..4]
-execute as @a[tag=slime.crafter_lvl9] run 
+execute as @a[tag=slime.crafter_lvl9] run
 execute as @a[tag=slime.crafter_lvl9] run give @s tripwire_hook{display:{Name:'{"text":"slime remover"}'}}
 execute as @a[tag=slime.crafter_lvl9,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"slime remover"}'}}}]}] run tag @s remove slime.crafter_lvl9
 

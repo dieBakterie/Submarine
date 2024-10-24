@@ -8,7 +8,7 @@ execute as @e[tag=gold_minion,tag=lvl7] at @s if entity @e[tag=gold.gen,limit=24
 execute as @e[tag=gold_minion,tag=lvl7] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"gold remover"}'}}}}] run tag @p add gold.crafter_lvl7
 execute as @e[tag=gold_minion,tag=lvl7] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"gold remover"}'}}}}] run fill ^-2 ^-1 ^-2 ^2 ^-1 ^2 air replace gold_ore
 execute as @e[tag=gold_minion,tag=lvl7] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"gold remover"}'}}}}] run kill @e[type=!player,distance=..3]
-execute as @a[tag=gold.crafter_lvl7] run 
+execute as @a[tag=gold.crafter_lvl7] run
 execute as @a[tag=gold.crafter_lvl7] run give @s tripwire_hook{display:{Name:'{"text":"gold remover"}'}}
 execute as @a[tag=gold.crafter_lvl7,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"gold remover"}'}}}]}] run tag @s remove gold.crafter_lvl7
 

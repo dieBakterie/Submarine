@@ -7,7 +7,7 @@ execute as @e[tag=obsidian_minion,tag=lvl1] at @s if entity @e[tag=obsidian.gen,
 #customcrafting
 execute as @e[type=item,nbt={Item:{id:"minecraft:obsidian",Count:64b}}] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:wooden_pickaxe",Count:1b}}] run tag @p add obsidian.crafter_lvl1
 execute as @e[type=item,nbt={Item:{id:"minecraft:obsidian",Count:64b}}] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:wooden_pickaxe",Count:1b}}] run kill @e[type=item,distance=..0.75]
-execute as @a[tag=obsidian.crafter_lvl1] run 
+execute as @a[tag=obsidian.crafter_lvl1] run
 execute as @a[tag=obsidian.crafter_lvl1] run give @s tripwire_hook{display:{Name:'{"text":"obsidian remover"}'}}
 execute as @a[tag=obsidian.crafter_lvl1,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"obsidian remover"}'}}}]}] run tag @s remove obsidian.crafter_lvl1
 execute as @e[tag=obsidian_minion,tag=lvl1] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"obsidian remover"}'}}}}] run tag @p add obsidian.crafter_lvl1

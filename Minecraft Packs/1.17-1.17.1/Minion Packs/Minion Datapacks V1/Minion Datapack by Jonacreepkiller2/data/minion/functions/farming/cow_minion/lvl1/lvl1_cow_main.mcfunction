@@ -6,7 +6,7 @@ execute as @a[scores={cow_killer=1}] if entity @e[tag=cow,limit=4] run scoreboar
 #customcrafting
 execute as @e[type=item,nbt={Item:{id:"minecraft:beef",Count:64b}}] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:wooden_sword",Count:1b}}] run tag @p add cow.crafter_lvl1
 execute as @e[type=item,nbt={Item:{id:"minecraft:beef",Count:64b}}] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:wooden_sword",Count:1b}}] run kill @e[type=item,distance=..0.75]
-execute as @a[tag=cow.crafter_lvl1] run 
+execute as @a[tag=cow.crafter_lvl1] run
 execute as @a[tag=cow.crafter_lvl1] run give @s tripwire_hook{display:{Name:'{"text":"cow remover"}'}} 1
 execute as @a[tag=cow.crafter_lvl1,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"cow remover"}'}}}]}] run tag @s remove cow.crafter_lvl1
 execute as @e[tag=cow_minion,tag=lvl1] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"cow remover"}'}}}}] run tag @p add cow.crafter_lvl1

@@ -7,7 +7,7 @@ execute as @e[tag=quarz_minion,tag=lvl1] at @s if entity @e[tag=quarz.gen,limit=
 #customcrafting
 execute as @e[type=item,nbt={Item:{id:"minecraft:quarz",Count:64b}}] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:wooden_pickaxe",Count:1b}},tag=lvl1] run tag @p add quarz.crafter_lvl1
 execute as @e[type=item,nbt={Item:{id:"minecraft:quarz",Count:64b}}] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:wooden_pickaxe",Count:1b}},tag=lvl1] run kill @e[type=item,distance=..0.75]
-execute as @a[tag=quarz.crafter_lvl1] run 
+execute as @a[tag=quarz.crafter_lvl1] run
 execute as @a[tag=quarz.crafter_lvl1] run give @s tripwire_hook{display:{Name:'{"text":"quarz remover"}'}}
 execute as @a[tag=quarz.crafter_lvl1,nbt={Inventory:[{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"quarz remover"}'}}}]}] run tag @s remove quarz.crafter_lvl1
 execute as @e[tag=quarz_minion,tag=lvl1] at @s if entity @e[type=item,distance=..0.75,nbt={Item:{id:"minecraft:tripwire_hook",Count:1b,tag:{display:{Name:'{"text":"quarz remover"}'}}}}] run tag @p add quarz.crafter_lvl1
